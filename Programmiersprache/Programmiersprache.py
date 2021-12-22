@@ -9,7 +9,8 @@
 '''
 1. Hello World Program - Done on 19.12.2021 15:00
 2. Working input function. - Done on 19.12.2021 17:00
-3. Variables to save input.
+3. Variables to save input. - partly done on 22.12.2021 18:00
+3.1 Improve MainInterpreter to fit to variables
 4. Print Input again
 
 Until 1th March:
@@ -22,6 +23,7 @@ code = '''
 import Console;
 import Variables;
 var Working;
+var Time = Console.out("Hallo Welt");
 Console.out("Hallo Welt");
 '''
 code = code.replace('\n', '')
