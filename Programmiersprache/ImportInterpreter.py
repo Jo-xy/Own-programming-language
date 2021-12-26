@@ -1,9 +1,12 @@
 def checkImport(task, items):
-    toImport = task.split(' ')
-    if toImport[1] == 'Console':
+    toImport = task.split(' ')[1]
+    if toImport == 'Console':
         items['Import_Console'] = True
 
-    if toImport[1] == 'Variables':
+    elif toImport == 'Variables':
         items['Import_Variables'] = True
 
-    return items
+    else:
+        print("No module named '" + toImport + "'")
+
+    return [items]

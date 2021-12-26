@@ -15,7 +15,7 @@ def checkVariable(task, items):
         # find out value
         varName = task.split('=')[0]
         varName = varName.replace(' ', '')
-        task = task.split('=')[1]
+        task = task.split('=', 1)[1]
 
         # remove unneeded 'space'
         if task[0] == ' ':
@@ -23,8 +23,7 @@ def checkVariable(task, items):
         if task[-1] == ' ':
             task = task[:-1]
 
-        # Not final !!!!!!!!
-        items['Variable_'+varName] = MainInterpreter.checkTask(task, items)
+        # Giving variable its value
+        items['Variable_'+varName] = MainInterpreter.checkTask(task, items)[0]
 
-    print(varName)
-
+    return [items.get('Variable_'+varName), 'Variable_'+varName, items]

@@ -28,6 +28,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Empty.py" />
+    <Compile Include="Functions.py" />
     <Compile Include="ImportInterpreter.py">
       <SubType>Code</SubType>
     </Compile>
@@ -35,9 +36,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Programmiersprache.py" />
+    <Compile Include="StringInterpreter.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="VariableInterpreter.py">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Errors.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

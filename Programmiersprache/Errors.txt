@@ -1,0 +1,12 @@
+Current list of all Errors
+
+- Missing Module '...'.
+- Task or expression not found.
+- Open Parameter.
+- String ending not marked.
+- Multiple strings not accepted.
+- Value can not be converted to integer/float.
+- Not sure if to convert in bool as True or False.
+- Can not find bool in input.
+- No valid datatype.
+- No module named '...'.
