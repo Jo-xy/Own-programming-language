@@ -3,7 +3,7 @@ from Empty import Empty
 # Have access to MainInterpreter
 import MainInterpreter
 
-def checkVariable(task, items):
+def checkVariable(task, origTask, items):
     task = task.split('var ', 1)[1]
 
     # if variable is just declared and don´t gets any value
@@ -24,6 +24,6 @@ def checkVariable(task, items):
             task = task[:-1]
 
         # Giving variable its value
-        items['Variable_'+varName] = MainInterpreter.checkTask(task, items)[0]
+        items['Variable_'+varName] = MainInterpreter.checkTask(task, origTask, items)[0]
 
-    return [items.get('Variable_'+varName), 'Variable_'+varName, items]
+    return [items.get('Variable_'+varName), 'Variable_'+varName, origTask, items]

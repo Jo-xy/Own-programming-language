@@ -1,41 +1,45 @@
-def out(output):
+def out(output, origTask, items):
     print(output)
-    return output
+    return [output, origTask, items]
 
-def read(msg = '', datatype='str'):               # msg = info message
+def read(origTask, items, msg = '', datatype='str'):               # msg = info message
     txt = input(msg)                              # txt = user´s input
 
     if datatype == 'str':
-        return txt
+        return [txt, origTask, items]
 
     elif datatype == 'int':
         try:
             txt = int(txt)
-            return txt
+            return [txt, origTask, items]
         except ValueError:
-            print("Error: Value can not be converted to integer.")
-            return "Error: Value can not be converted to integer."
+            print("Error in '{}'.".format(origTask))
+            print("Value can not be converted to integer.")
+            return ["Error", origTask, items]
 
     elif datatype == 'float':
         try:
             txt = float(txt)
-            return txt
+            return [txt, origTask, items]
         except ValueError:
-            print("Error: Value can not be converted to float.")
-            return "Error: Value can not be converted to float."
+            print("Error in '{}'.".format(origTask))
+            print("Value can not be converted to float.")
+            return ["Error", origTask, items]
 
     elif datatype == 'bool':
-        if 'true' in txt.lower() and 'false' in txt.lower():
-            print("Error: Not sure if to convert in bool as True or False.")
-            return "Error: Not sure if to convert in bool as True or False."
-        elif 'true' in txt.lower():
-            return True
-        elif 'false' in txt.lower():
-            return False
+        if 'True' in txt and 'False' in txt:
+            print("Error in '{}'.".format(origTask))
+            print("Not sure if to convert in bool as True or False.")
+            return ["Error", origTask, items]
+        elif 'True' in txt:
+            return [True, origTask, items]
+        elif "False" in txt:
+            return [False, origTask, items]
         else:
-            print("Error: Can not find bool in input.")
-            return "Error: Can not find bool in input."
+            print("Error in '{}'.".format(origTask))
+            print("Can not find bool in input.")
+            return ["Error", origTask, items]
 
     else:
         print("Error: No valid datatype.")
-        return "Error: No valid datatype."
+        return ["Error", origTask, items]

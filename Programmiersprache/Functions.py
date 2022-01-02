@@ -3,7 +3,7 @@ import MainInterpreter
 
 class Functions:
     @staticmethod
-    def splitParameters(expression, items):
+    def splitParameters(expression, origTask, items):
         expression = str(expression)
         parameters = {}
         mode = 'waiting'
@@ -27,19 +27,21 @@ class Functions:
                         key += i
             # while recording value
             elif mode == 'searchValue':
-                if i != ' ':
-                    # switch mode
-                    if i == '>':
-                        value = MainInterpreter.checkTask(value, items)[0]
-                        parameters[key] = value
-                        key = value = ''
+                # if i != ' ':                  # this deleted all spaces e.g. in input-msg
 
-                        mode = 'waiting'
-                    # record value
-                    else:
-                        value += i
+                # switch mode
+                if i == '>':
+                    value = MainInterpreter.checkTask(value, origTask, items)[0]
+                    parameters[key] = value
+                    key = value = ''
+
+                    mode = 'waiting'
+                # record value
+                else:
+                    value += i
 
         if mode != 'waiting':
-            print('Error: Open parameter.')
+            print("Error in '{}'.".format(origTask))
+            print('Open parameter.')
         
-        return [parameters, items]
+        return [parameters, origTask, items]

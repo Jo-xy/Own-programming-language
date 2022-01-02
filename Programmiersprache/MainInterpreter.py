@@ -5,39 +5,51 @@ import ImportInterpreter
 import ConsoleInterpreter
 import VariableInterpreter
 import StringInterpreter
+import NumberInterpreter
+import BoolInterpreter
 
-def checkTask(task, items):
+def checkTask(task, origTask, items):
     # If it큦 an import
     if task.startswith('import'):
-        items = ImportInterpreter.checkImport(task, items)[0]
-        return [items]
+        items = ImportInterpreter.checkImport(task, origTask, items)[-1]
+        return [origTask, items]
 
 
 
     # If it is just a string
     elif task.startswith('"'):
-        string = StringInterpreter.checkString(task, items)[0]
-        return [string, items]
+        string = StringInterpreter.checkString(task, origTask, items)[0]
+        return [string, origTask, items]
 
-    
+    # If it is a number
+    elif task.replace('.', '', 1).isdigit():
+        number = NumberInterpreter.checkNumber(task, origTask, items)[0]
+        return [number, origTask, items]
+
+    # If it is a boolean
+    elif task.startswith('True') or task.startswith('False'):
+        value = BoolInterpreter.checkBool(task, origTask, items)[0]
+        return [value, origTask, items]
 
     # If it큦 a variable thing
     elif task.startswith('var'):
         if items.get('Import_Variables') == True:
-            content = VariableInterpreter.checkVariable(task, items)[0]
-            return [content, items]
+            content = VariableInterpreter.checkVariable(task, origTask, items)[0]
+            return [content, origTask, items]
         else:
-            print("Error: Missing module 'Variables'")
+            print("Error in '{}'.".format(origTask))
+            print("Missing module 'Variables'.")
 
 
 
     # If it큦 a console task
     elif task.startswith('Console'):
         if items.get('Import_Console') == True:
-            value = ConsoleInterpreter.checkConsole(task, items) # Here is no [0] needed, because not a list is returned
-            return [value, items]
+            value = ConsoleInterpreter.checkConsole(task, origTask, items)[0]
+            return [value, origTask, items]
         else:
-            print("Error: Missing module 'Console'")
+            print("Error in '{}'.".format(origTask))
+            print("Missing module 'Console'.")
     
 
     # If nothing of this, check if it큦 a variable etc...
@@ -51,12 +63,13 @@ def checkTask(task, items):
 
                 #special cases
                 if i == 'Import_':
-                    return [True, items]
+                    return [True, origTask, items]
 
-                return [itemFound, items]
+                return [itemFound, origTask, items]
 
         # When no variable etc. was found
         if itemFound == False:
-            print("Error: Task or expression not found")
+            print("Error in '{}'.".format(origTask))
+            print("Task or expression not found")
     
-    return [items]
+    return [origTask, items]

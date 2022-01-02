@@ -1,4 +1,4 @@
-def checkImport(task, items):
+def checkImport(task, origTask, items):
     toImport = task.split(' ')[1]
     if toImport == 'Console':
         items['Import_Console'] = True
@@ -7,6 +7,7 @@ def checkImport(task, items):
         items['Import_Variables'] = True
 
     else:
-        print("No module named '" + toImport + "'")
+        print("Error in '{}'.".format(origTask))
+        print("No module named '{}'".format(toImport))
 
-    return [items]
+    return [origTask, items]
