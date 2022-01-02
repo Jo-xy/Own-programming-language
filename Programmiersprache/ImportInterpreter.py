@@ -6,6 +6,9 @@ def checkImport(task, origTask, items):
     elif toImport == 'Variables':
         items['Import_Variables'] = True
 
+    elif toImport == 'time':
+        items['Import_time'] = True
+
     else:
         print("Error in '{}'.".format(origTask))
         print("No module named '{}'".format(toImport))

@@ -1,8 +1,11 @@
 Current list of all Errors
 
-- Missing Module '...'.
-- Task or expression not found.
 - Open Parameter.
+- Missing parameter '...'.
+- Invalid parameter '...'.
+- Missing Module '...'.
+- No function called '...'.
+- Task or expression not found.
 - String ending not marked.
 - Multiple strings not accepted.
 - Value can not be converted to integer/float.

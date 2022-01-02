@@ -7,6 +7,7 @@ import VariableInterpreter
 import StringInterpreter
 import NumberInterpreter
 import BoolInterpreter
+import TimeInterpreter
 
 def checkTask(task, origTask, items):
     # If it´s an import
@@ -50,6 +51,14 @@ def checkTask(task, origTask, items):
         else:
             print("Error in '{}'.".format(origTask))
             print("Missing module 'Console'.")
+
+    elif task.startswith('time'):
+        if items.get('Import_time') == True:
+            value = TimeInterpreter.checkTime(task, origTask, items)[0]
+            return [value, origTask, items]
+        else:
+            print("Error in '{}'.".format(origTask))
+            print("Missing module 'time'.")
     
 
     # If nothing of this, check if it´s a variable etc...

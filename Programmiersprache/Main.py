@@ -17,14 +17,14 @@
     3.1. Improve MainInterpreter to fit to variables - Completed on 23.12.2021 on 16:30
         3.1.1. set up a basic StringInterpreter - Done on 22.12.2021 on 19:20
         3.1.2. use StringInterpreter now in the other interpreters - Completed on 23.12.2021 on 16:30
-            3.1.2.1. algorithm to find out the amount of parameters given - Done on 23.12.2021 on 15:00
+            3.1.2.1. algorithm to find out the amount of arguments given - Done on 23.12.2021 on 15:00
             3.1.2.2. detect automatically if it is an expression (remove 'expression' parameter) - Done on 23.12.2021 on 16:30
                 --> handels expressions as normal tasks
     3.2. be able to print Input again - Done on 23.12.2021 on 16:40
 
 4. Solve multiple-parameter problem - Completely done on 26.12.2021 on 13:20
 
-5. Be able to put tasks in as parameters - Done  on 26.12.2021 on 13:20 (May cause Error in future)
+5. Be able to put tasks in as arguments - Done  on 26.12.2021 on 13:20 (May cause Error in future)
     --> still under observation / experimental feature
 
 6. Be able to save numbers, bool, etc... - Completely done on 01.01.2022 on 15:50
@@ -43,7 +43,8 @@
     8.2. Error massages (always past in the current original task, to print it when an Error happens) - Done on 02.01.2022 on 10:45
          --> saved at index -2 of every returned list. All functions need it now (2. last positional parameter)
 
-9. A few basic cmd commands
+9. time module - Done on 02.01.2021 on 20:54
+   --> time.time(...), time.date(...), time.calendar()
 
 10. Try to introduce operators
 

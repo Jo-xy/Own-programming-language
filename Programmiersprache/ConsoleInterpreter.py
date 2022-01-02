@@ -34,8 +34,6 @@ def checkConsole(task, origTask, items):
                 value = Console.read(origTask, items, datatype = par.get('datatype'))[0]
                 return [value, origTask, items]
 
-        ###########---Problem of more than one parameter------------##########
-        # Have to fix it!!!
         elif par.get('msg') and par.get('datatype'):
             value = Console.read(origTask, items, msg = par.get('msg'), datatype = par.get('datatype'))[0]
             return [value, origTask, items]

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>a860846c-1ffe-491c-96a8-a7bd3da7cbd4</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Programmiersprache.py</StartupFile>
+    <StartupFile>Main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -37,11 +37,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="NumberInterpreter.py" />
-    <Compile Include="Programmiersprache.py" />
+    <Compile Include="Main.py" />
     <Compile Include="StartGUI.py" />
     <Compile Include="StringInterpreter.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="TimeInterpreter.py" />
     <Compile Include="VariableInterpreter.py">
       <SubType>Code</SubType>
     </Compile>
