@@ -3,3 +3,5 @@
 It gets interpreted by Python scripts.
 It´ll be usefull for small automation processes in the console and won´t allow to make GUIs.
 It will be able to do similar things as the cmd.
+
+If you want more detailed information about the changes, look inside the 'Main.py' in the folder 'Programmiersprache'
