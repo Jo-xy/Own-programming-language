@@ -37,7 +37,7 @@
     7.3. Option of running the code multiple times
     7.4. Design the interface
 
-8. More detailed Error messages (with information about what caused the Error)
+8. More detailed Error messages (with information about what caused the Error) - Completely done on 02.01.2022 on 10:45
     8.1. First fix input-bug that clears all spaces in input-msg - Done on 02.01.2022 on 09:05
          --> fixed. Problem was in 'splitParameters'. ALL spaces were skipped, removed this. Now are spaces between/in parameters no longer allowed.
     8.2. Error massages (always past in the current original task, to print it when an Error happens) - Done on 02.01.2022 on 10:45
