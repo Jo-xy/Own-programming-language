@@ -22,6 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BoolInterpreter.py" />
+    <Compile Include="CalculationInterpreter.py" />
     <Compile Include="Console.py">
       <SubType>Code</SubType>
     </Compile>

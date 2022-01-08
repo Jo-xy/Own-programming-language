@@ -8,6 +8,7 @@ import StringInterpreter
 import NumberInterpreter
 import BoolInterpreter
 import TimeInterpreter
+import CalculationInterpreter
 
 def checkTask(task, origTask, items):
     # If it´s an import
@@ -41,7 +42,19 @@ def checkTask(task, origTask, items):
             print("Error in '{}'.".format(origTask))
             print("Missing module 'Variables'.")
 
-
+    # If it is a calculation
+    elif task.startswith('calc'):
+        if items.get('Import_Calculations') == True:
+            # check if there is something to calculate
+            try:
+                task = task.split('calc ')[1]
+                result = CalculationInterpreter.calculate(task, origTask, items)[0]
+                return [result, origTask, items]
+            except IndexError:
+                return [None, origTask, items]
+        else:
+            print("Error in '{}'.".format(origTask))
+            print("Missing module 'Calculations'.")
 
     # If it´s a console task
     elif task.startswith('Console'):

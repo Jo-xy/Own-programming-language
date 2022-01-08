@@ -33,9 +33,10 @@
 
 7. Have a start GUI
     7.1. Have an Input-field, write code there and run it - Done on 01.01.2021 on ~20:00
-    7.2. Load text from existing file
-    7.3. Option of running the code multiple times
-    7.4. Design the interface
+    7.2. Have a tick-box to import standard modules automatically
+    7.3. Load text from existing file
+    7.4. Option of running the code multiple times
+    7.5. Design the interface
 
 8. More detailed Error messages (with information about what caused the Error) - Completely done on 02.01.2022 on 10:45
     8.1. First fix input-bug that clears all spaces in input-msg - Done on 02.01.2022 on 09:05
@@ -46,9 +47,22 @@
 9. time module - Done on 02.01.2021 on 20:54
    --> time.time(...), time.date(...), time.calendar()
 
-10. Try to introduce operators
+10. CalculationInterpreter
+    10.1. Split Numbers correctly - Done on 04.01.2022 on 17:35
+    10.2. Calculation of all types from left to right - Done on 04.01.2022 on 18:00
+    10.3. Calculate '.' before '-' - Status on 04.01.2022 20:45: working on it nearly 3 hours and there are still weird bugs...
+                                   - Fixed for '.'-calculation on 08.01.2022 on 14:15
+                                   - Completely done on  08.01.2022 on 14:25
+    
+    10.4. Maybe be able to use brackets, probably not so good/possible? check it later!!!
 
-11. If-blocks
+11. String module
+
+12. If-blocks
+    |
+    |--> using a codeblock-name and mark ending with 'end name'
+    |
+13. While-loops 
 
 
 Until 1th March:
@@ -69,6 +83,7 @@ if code[-1] == ';':
     code = code[:-1]
 # seperate tasks
 tasks = code.split(';')
+
 
 for task in tasks:
     feedback = MainInterpreter.checkTask(task, task, items)

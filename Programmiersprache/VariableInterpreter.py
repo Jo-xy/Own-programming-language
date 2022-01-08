@@ -4,7 +4,10 @@ from Empty import Empty
 import MainInterpreter
 
 def checkVariable(task, origTask, items):
-    task = task.split('var ', 1)[1]
+    try:
+        task = task.split('var ', 1)[1]
+    except IndexError:
+        return [None, origTask, items]
 
     # if variable is just declared and don´t gets any value
     if not '=' in task:
