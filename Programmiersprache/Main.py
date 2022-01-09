@@ -56,13 +56,14 @@
     
     10.4. Maybe be able to use brackets, probably not so good/possible? check it later!!!
 
-11. String module
+11. If-blocks - Done for the moment on 09.01.2022 on 18:00
+    11.1. IfInterpreter detects a CodeBlock and is able to end it - Probably done on 09.01.2022 on 14:10 - Right, Done!
+    11.2. Detailed Interpretation of boolExpression given after 'if' - Done on 09.01.2022 on 17:50
+    --> Maybe add more options in future
 
-12. If-blocks
-    |
-    |--> using a codeblock-name and mark ending with 'end name'
-    |
-13. While-loops 
+12. While-loops 
+
+13. String module
 
 
 Until 1th March:
@@ -76,7 +77,8 @@ code = StartGUI.Start()
 code = code.replace('\n', '')
 
 
-items = {}              # All variables, imports, in future objects, etc...
+IfBlocks = []
+items = {'IfBlocks': IfBlocks}              # All variables, imports, in future objects, etc... # Also has CodeBlocks in it
 
 # remove last task-splitting-symbol to prevent 'Task not found' Error
 if code[-1] == ';':
@@ -86,7 +88,7 @@ tasks = code.split(';')
 
 
 for task in tasks:
-    feedback = MainInterpreter.checkTask(task, task, items)
+    feedback = MainInterpreter.checkTask(task, task, items, code=code)
 
     # Remove this in Future!
     # Items is updated automatically, but is maybe still usefull (or actually used) as control-thing

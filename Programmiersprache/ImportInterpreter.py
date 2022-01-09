@@ -9,6 +9,9 @@ def checkImport(task, origTask, items):
     elif toImport == 'Calculations':
         items['Import_Calculations'] = True
 
+    elif toImport == 'If':
+        items['Import_If'] = True
+
     elif toImport == 'time':
         items['Import_time'] = True
 

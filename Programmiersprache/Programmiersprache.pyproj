@@ -31,6 +31,7 @@
     </Compile>
     <Compile Include="Empty.py" />
     <Compile Include="Functions.py" />
+    <Compile Include="IfInterpreter.py" />
     <Compile Include="ImportInterpreter.py">
       <SubType>Code</SubType>
     </Compile>

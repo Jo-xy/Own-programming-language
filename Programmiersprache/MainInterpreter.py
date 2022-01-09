@@ -9,10 +9,29 @@ import NumberInterpreter
 import BoolInterpreter
 import TimeInterpreter
 import CalculationInterpreter
+import IfInterpreter
 
-def checkTask(task, origTask, items):
+def checkTask(task, origTask, items, code=None):
+    # When you are inside a IfBlock
+    if items.get('IfBlocks') != []:
+        # When the ending of the Block is marked
+        if task.startswith('end '):
+            try:
+                endedBlock = task.split('end ')[1]
+                items['IfBlocks'].remove(endedBlock)
+                return [origTask, items]
+
+            except IndexError:
+                print("Error in '{}'.".format(origTask))
+                print('Missing Argument.')
+                return [origTask, items]
+
+        return [origTask, items]
+
+
+
     # If it큦 an import
-    if task.startswith('import'):
+    elif task.startswith('import'):
         items = ImportInterpreter.checkImport(task, origTask, items)[-1]
         return [origTask, items]
 
@@ -23,15 +42,18 @@ def checkTask(task, origTask, items):
         string = StringInterpreter.checkString(task, origTask, items)[0]
         return [string, origTask, items]
 
+
     # If it is a number
     elif task.replace('.', '', 1).isdigit():
         number = NumberInterpreter.checkNumber(task, origTask, items)[0]
         return [number, origTask, items]
 
+
     # If it is a boolean
     elif task.startswith('True') or task.startswith('False'):
         value = BoolInterpreter.checkBool(task, origTask, items)[0]
         return [value, origTask, items]
+
 
     # If it큦 a variable thing
     elif task.startswith('var'):
@@ -41,6 +63,7 @@ def checkTask(task, origTask, items):
         else:
             print("Error in '{}'.".format(origTask))
             print("Missing module 'Variables'.")
+
 
     # If it is a calculation
     elif task.startswith('calc'):
@@ -56,6 +79,17 @@ def checkTask(task, origTask, items):
             print("Error in '{}'.".format(origTask))
             print("Missing module 'Calculations'.")
 
+
+    # if-blocks
+    elif task.startswith('if'):
+        if items.get('Import_If'):
+            safetyFeedback = IfInterpreter.checkIfBlock(task, origTask, items)
+            return safetyFeedback
+        else:
+            print("Error in '{}'.".format(origTask))
+            print("Missing module 'If'.")
+
+
     # If it큦 a console task
     elif task.startswith('Console'):
         if items.get('Import_Console') == True:
@@ -65,6 +99,8 @@ def checkTask(task, origTask, items):
             print("Error in '{}'.".format(origTask))
             print("Missing module 'Console'.")
 
+
+    # time module
     elif task.startswith('time'):
         if items.get('Import_time') == True:
             value = TimeInterpreter.checkTime(task, origTask, items)[0]
@@ -73,6 +109,7 @@ def checkTask(task, origTask, items):
             print("Error in '{}'.".format(origTask))
             print("Missing module 'time'.")
     
+
 
     # If nothing of this, check if it큦 a variable etc...
     else:
