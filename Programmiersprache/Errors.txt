@@ -1,6 +1,6 @@
 Current list of all Errors
 
-- Open Parameter.
+- Open brackets.
 - Missing parameter '...'.
 - Invalid parameter '...'.
 - Missing Module '...'.
@@ -13,3 +13,5 @@ Current list of all Errors
 - Can not find bool.
 - No valid datatype.
 - No module named '...'.
+- Not able to use indeces for this object.
+- Index out of range.

@@ -8,6 +8,7 @@ from PIL import Image, ImageTk
 def Start():
     root = tk.Tk()
     root.geometry("800x650")
+    root.title("CTA")
 
 
     # Show logo

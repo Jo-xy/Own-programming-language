@@ -10,6 +10,8 @@ import BoolInterpreter
 import TimeInterpreter
 import CalculationInterpreter
 import IfInterpreter
+import ListInterpreter
+import IndexInterpreter
 
 def checkTask(task, origTask, items, code=None):
     # When you are inside a IfBlock
@@ -44,7 +46,7 @@ def checkTask(task, origTask, items, code=None):
 
 
     # If it is a number
-    elif task.replace('.', '', 1).isdigit():
+    elif task.replace('.', '', 1).replace('-', '', 1).isdigit():
         number = NumberInterpreter.checkNumber(task, origTask, items)[0]
         return [number, origTask, items]
 
@@ -55,6 +57,12 @@ def checkTask(task, origTask, items, code=None):
         return [value, origTask, items]
 
 
+    # If it´s a list
+    elif task.startswith('['):
+        listElements = ListInterpreter.checkList(task, origTask, items)[0]
+        return [listElements, origTask, items]
+
+
     # If it´s a variable thing
     elif task.startswith('var'):
         if items.get('Import_Variables') == True:
@@ -63,6 +71,17 @@ def checkTask(task, origTask, items, code=None):
         else:
             print("Error in '{}'.".format(origTask))
             print("Missing module 'Variables'.")
+
+
+    # Set Indeces
+    elif task.startswith('setIndex('):
+        newValue, origTask, items = IndexInterpreter.setIndex(task, origTask, items)
+        return [newValue, origTask, items]
+
+    # Get indeces
+    elif task.startswith('getIndex('):
+        value = IndexInterpreter.getIndex(task, origTask, items)[0]
+        return [value, origTask, items]
 
 
     # If it is a calculation

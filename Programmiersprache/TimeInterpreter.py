@@ -53,7 +53,7 @@ def calendar(task, origTask, items):
     timeString = t.ctime()
 
     timeString = timeString.split(' ')
-    timeString.remove('')
+    # timeString.remove('')
     timeString.pop(3)
     timeString = ' '.join(timeString)
 

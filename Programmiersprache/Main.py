@@ -47,7 +47,7 @@
 9. time module - Done on 02.01.2021 on 20:54
    --> time.time(...), time.date(...), time.calendar()
 
-10. CalculationInterpreter
+10. CalculationInterpreter - Done
     10.1. Split Numbers correctly - Done on 04.01.2022 on 17:35
     10.2. Calculation of all types from left to right - Done on 04.01.2022 on 18:00
     10.3. Calculate '.' before '-' - Status on 04.01.2022 20:45: working on it nearly 3 hours and there are still weird bugs...
@@ -61,9 +61,24 @@
     11.2. Detailed Interpretation of boolExpression given after 'if' - Done on 09.01.2022 on 17:50
     --> Maybe add more options in future
 
-12. While-loops 
+12. Create datatype 'list' - Done 
+    12.1. Fix parameter problem and replace the <> functionalities with commas (maybe do it in a seperate module if it is too complex) - Done in Functions on 21.01.2022 on 21:25
+        12.1.1. Adapt this a little bit to use it for lists etc... - Check later if it works - Done on 22.01.2022
+        12.1.2. Renew or add Error messages for the parameter- or list-splitting system - Done on 22.01.2022
+    12.2. After this, it should be easy to introduce lists by [element1, element2] - Done on 22.01.2022 on 13:45
+    12.3. Find a way to get values at special indeces - getIndex(variablename, indexnumber) - Done on 22.01.2022 on 18:15
+    12.4. Change indeces - setIndex(variablename, indexNumber, newValue) - Done on 23.01.2022 on 13:50
+    12.5. Be able to use a constructor to create a list with a special number of spaces inside - Done on 22.01.2022 on 19:15
+    --> e.g. [:5] creates a list with 5 times None inside
+    12.6. Give the constructor also a value that he has to put in all of those gaps - Done on 22.01.2022 on 19:50
+    --> e.g. write [:7:"Hi"] to create a list with seven times the string "Hi" inside
+    12.7. Negative indeces - Done on 23.01.2022 on 19:49
 
 13. String module
+
+14. While-loops 
+    .IDEA() - Maybe do not loop through the originall task, but first go through the tasks and add them each by each to the tasklist?
+
 
 
 Until 1th March:

@@ -35,6 +35,8 @@
     <Compile Include="ImportInterpreter.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IndexInterpreter.py" />
+    <Compile Include="ListInterpreter.py" />
     <Compile Include="MainInterpreter.py">
       <SubType>Code</SubType>
     </Compile>
