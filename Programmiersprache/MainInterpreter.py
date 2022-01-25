@@ -150,4 +150,4 @@ def checkTask(task, origTask, items, code=None):
             print("Error in '{}'.".format(origTask))
             print("Task or expression not found")
     
-    return [origTask, items]
+    return [None, origTask, items]

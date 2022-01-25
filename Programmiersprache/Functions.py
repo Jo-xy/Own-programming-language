@@ -74,16 +74,18 @@ class Functions:
 
             # while recording value
             elif mode == 'searchValue':
-                if i == "(" or i == "[":
+                if i == "(" or i == "[" and inString == -1:
                     inValue += 1
                     continue
 
-                elif i==')' or i == ']':
+                elif i==')' or i == ']' and inString == -1:
                     inValue -= 1
                     continue
 
                 elif i == '"':
                     inString *= -1
+                    value += i
+                    continue
 
                 elif inValue != 0 or inString == 1:
                     value += i
@@ -101,7 +103,7 @@ class Functions:
 
 
 
-        parameters[key] = value
+        parameters[key] = MainInterpreter.checkTask(value, origTask, items)[0]
 
         if inString == 1:
             print("Error in '{}'.".format(origTask))

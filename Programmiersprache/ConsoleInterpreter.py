@@ -47,7 +47,6 @@ def checkConsole(task, origTask, items):
             newTask += i
         task = newTask
 
-
         par = parameters = Functions.splitParameters(task, origTask, items)[0]
 
         if par.get('msg') and not par.get('datatype'):
