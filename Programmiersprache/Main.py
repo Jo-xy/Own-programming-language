@@ -73,10 +73,13 @@
     12.6. Give the constructor also a value that he has to put in all of those gaps - Done on 22.01.2022 on 19:50
     --> e.g. write [:7:"Hi"] to create a list with seven times the string "Hi" inside
     12.7. Negative indeces - Done on 23.01.2022 on 19:49
+    12.8. Bugfixes - Done on 25.01.2022 on 18:30
 
-13. String module
+13. type() function - Done on 29.01.2022 on 14:00
 
-14. While-loops 
+14. String module
+
+15. While-loops 
     .IDEA() - Maybe do not loop through the originall task, but first go through the tasks and add them each by each to the tasklist?
 
 

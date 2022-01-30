@@ -57,5 +57,6 @@ def read(origTask, items, msg = '', datatype='str'):               # msg = info 
             return [None, origTask, items]
 
     else:
-        print("Error: No valid datatype.")
+        print("Error in '{}'.".format(origTask))
+        print("No valid datatype.")
         return ["Error", origTask, items]

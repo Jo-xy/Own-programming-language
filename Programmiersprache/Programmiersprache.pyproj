@@ -47,6 +47,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TimeInterpreter.py" />
+    <Compile Include="TypeInterpreter.py" />
     <Compile Include="VariableInterpreter.py">
       <SubType>Code</SubType>
     </Compile>

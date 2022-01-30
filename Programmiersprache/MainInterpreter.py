@@ -12,6 +12,7 @@ import CalculationInterpreter
 import IfInterpreter
 import ListInterpreter
 import IndexInterpreter
+import TypeInterpreter
 
 def checkTask(task, origTask, items, code=None):
     # When you are inside a IfBlock
@@ -82,6 +83,12 @@ def checkTask(task, origTask, items, code=None):
     elif task.startswith('getIndex('):
         value = IndexInterpreter.getIndex(task, origTask, items)[0]
         return [value, origTask, items]
+
+
+    # type() function
+    elif task.startswith('type('):
+        datatype = TypeInterpreter.checkType(task, origTask, items)[0]
+        return [datatype, origTask, items]
 
 
     # If it is a calculation

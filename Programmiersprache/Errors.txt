@@ -4,7 +4,7 @@ Current list of all Errors
 - Missing parameter '...'.
 - Invalid parameter '...'.
 - Missing Module '...'.
-- No function called '...'.
+- No function / variable called '...'.
 - Task or expression not found.
 - String ending not marked.
 - Multiple strings not accepted.
