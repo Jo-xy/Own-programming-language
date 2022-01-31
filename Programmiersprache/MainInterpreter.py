@@ -13,6 +13,7 @@ import IfInterpreter
 import ListInterpreter
 import IndexInterpreter
 import TypeInterpreter
+import LenInterpreter
 
 def checkTask(task, origTask, items, code=None):
     # When you are inside a IfBlock
@@ -44,6 +45,73 @@ def checkTask(task, origTask, items, code=None):
     elif task.startswith('"'):
         string = StringInterpreter.checkString(task, origTask, items)[0]
         return [string, origTask, items]
+
+    ##String-module##
+    elif task.startswith('split('):
+        splittedString = StringInterpreter.splitString(task, origTask, items)[0]
+        return [splittedString, origTask, items]
+
+    elif task.startswith('combine('):
+        combinedString = StringInterpreter.combineListElementsToString(task, origTask, items)[0]
+        return [combinedString, origTask, items]
+
+    elif task.startswith('toUpper('):
+        uppercaseString = StringInterpreter.toUpper(task, origTask, items)[0]
+        return [uppercaseString, origTask, items]
+
+    elif task.startswith('toLower('):
+        lowercaseString = StringInterpreter.toLower(task, origTask, items)[0]
+        return [lowercaseString, origTask, items]
+
+    elif task.startswith('invertcase('):
+        invertedString = StringInterpreter.invertcase(task, origTask, items)[0]
+        return [invertedString, origTask, items]
+
+    elif task.startswith('capitalize('):
+        capitalizedString = StringInterpreter.capitalize(task, origTask, items)[0]
+        return [capitalizedString, origTask, items]
+
+    elif task.startswith('isFirst('):
+        isFirst = StringInterpreter.isFirst(task, origTask, items)[0]
+        return [isFirst, origTask, items]
+
+    elif task.startswith('isLast('):
+        isLast = StringInterpreter.isLast(task, origTask, items)[0]
+        return [isLast, origTask, items]
+
+    # later also used for lists
+    elif task.startswith('remove('):
+        shortedElement = StringInterpreter.remove(task, origTask, items)[0]
+        return [shortedElement, origTask, items]
+
+    # later also used for lists
+    elif task.startswith('replace('):
+        modifiedElement = StringInterpreter.replace(task, origTask, items)[0]
+        return [modifiedElement, origTask, items]
+    ##-|-<End of String-module>-|-##
+
+
+    ##List-module##
+    elif task.startswith('addIndex('):
+        newList = ListInterpreter.addIndex(task, origTask, items)[0]
+        return [newList, origTask, items]
+
+    elif task.startswith('deleteIndex('):
+        newList = ListInterpreter.deleteIndex(task, origTask, items)[0]
+        return [newList, origTask, items]
+
+    elif task.startswith('append('):
+        newList = ListInterpreter.appendIndex(task, origTask, items)[0]
+        return [newList, origTask, items]
+
+    elif task.startswith('extend('):
+        newList = ListInterpreter.extendList(task, origTask, items)[0]
+        return [newList, origTask, items]
+
+    elif task.startswith('searchValue'):
+        listOfIndeces = ListInterpreter.searchValue(task, origTask, items)[0]
+        return [listOfIndeces, origTask, items]
+    ##-|-<End of List-module>-|-##
 
 
     # If it is a number
@@ -89,6 +157,12 @@ def checkTask(task, origTask, items, code=None):
     elif task.startswith('type('):
         datatype = TypeInterpreter.checkType(task, origTask, items)[0]
         return [datatype, origTask, items]
+
+
+    # len() function
+    elif task.startswith('len('):
+        length = LenInterpreter.length(task, origTask, items)[0]
+        return [length, origTask, items]
 
 
     # If it is a calculation

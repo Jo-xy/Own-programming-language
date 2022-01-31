@@ -77,10 +77,30 @@
 
 13. type() function - Done on 29.01.2022 on 14:00
 
-14. String module
+14. String functions/slicing - Started on 30.01.2022 on 14:00 - Done for the moment on 31.01.2022 on 13:00
+    14.1. split(element, splitpoint) - Done on 30.01.2022 on 14:30
+    14.2. combine(elementList) - Done on 30.01.2022 on 17:45 (worked on it for around 15 minutes)
+    14.3. toUpper() and toLower() - Done on 30.01.2022 on 19:00 (worked on it for ~20+ minutes)
+    14.4. invertcase() changes uppercase to lowercase and the other way around + capitalize() all lowecase but the first uppercase - Done on 31.01.2022 on 11:30
+    14.5. isfirst() and islast() - Done on 31.01.2022 on 11:45
+    14.6. remove(obj, ValueToRemove) - Done on 31.01.2022 on 12:55
+    14.7. replace(obj, oldValue, newValue) - Done on 31.01.2022 on 13:00
 
-15. While-loops 
-    .IDEA() - Maybe do not loop through the originall task, but first go through the tasks and add them each by each to the tasklist?
+15. len() function - Done on 31.01.2022 on 14:10
+
+16. List functions/slicing - Started on 31.01.2022 on 14:10 - Done for the moment on 31.01.2022 on 17:15
+    16.1. Adapt string remove() and replace() to lists - Done on 31.01.2022 on 16:05
+    16.2. addIndex() and deleteIndex() and append() and extend() - Done on 31.01.2022 on 17:05
+    16.3. searchValue(element, searchedValue) (maybe change functionname in future) - Done on 31.01.2022 on 17:15
+
+17. While-loops 
+    .IDEA() - Maybe do not loop through the original task, but first go through the tasks and add them each by each to the tasklist? - NO!! Will not work when user has to do an input!!
+
+18. For-loops
+
+19. Random module/functionalities
+
+20. Text encryption
 
 
 

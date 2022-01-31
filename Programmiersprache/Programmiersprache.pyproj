@@ -36,6 +36,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IndexInterpreter.py" />
+    <Compile Include="LenInterpreter.py" />
     <Compile Include="ListInterpreter.py" />
     <Compile Include="MainInterpreter.py">
       <SubType>Code</SubType>

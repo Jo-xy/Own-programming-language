@@ -2,16 +2,18 @@ Current list of all Errors
 
 - Open brackets.
 - Missing parameter '...'.
-- Invalid parameter '...'.
+- Invalid parameter '...' / arguments.
 - Missing Module '...'.
 - No function / variable called '...'.
 - Task or expression not found.
 - String ending not marked.
 - Multiple strings not accepted.
 - Value can not be converted to integer/float.
+- Argument must be datatype str/float/int/bool/list...
 - Not sure if to convert in bool as True or False.
 - Can not find bool.
 - No valid datatype.
 - No module named '...'.
 - Not able to use indeces for this object.
 - Index out of range.
+- Element has no length.
