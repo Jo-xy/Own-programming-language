@@ -100,7 +100,7 @@
 
 19. Random module/functionalities
 
-20. Text encryption
+20. Text encryption 
 
 
 
