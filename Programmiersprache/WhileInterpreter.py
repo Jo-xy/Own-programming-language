@@ -1,8 +1,8 @@
 import BoolInterpreter
 
-def checkIfBlock(expression, origTask, items):
+def checkWhileBlock(expression, tasknum, origTask, items):
     try:
-        expression = expression.split('if ')[1]
+        expression = expression.split('while ')[1]
 
         # Find out if the statement is true or False
         boolExpression = expression.split('(', 1)[1]
@@ -26,9 +26,11 @@ def checkIfBlock(expression, origTask, items):
         name = name.replace(' ', '')
 
         if isTrue == True:
+            items['WhileBlocks'][name] = tasknum
             return [True, origTask, items]
         else:
             items['IfBlocks'].append(name)
+            items['WhileBlocks'][name] = None
             return [False, origTask, items]
 
 

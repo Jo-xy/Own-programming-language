@@ -14,8 +14,9 @@ import ListInterpreter
 import IndexInterpreter
 import TypeInterpreter
 import LenInterpreter
+import WhileInterpreter
 
-def checkTask(task, origTask, items, code=None):
+def checkTask(task, origTask, items, code=None, tasknum=None, tasks=None):
     # When you are inside a IfBlock
     if items.get('IfBlocks') != []:
         # When the ending of the Block is marked
@@ -23,14 +24,45 @@ def checkTask(task, origTask, items, code=None):
             try:
                 endedBlock = task.split('end ')[1]
                 items['IfBlocks'].remove(endedBlock)
-                return [origTask, items]
+                return [None, origTask, items]
 
             except IndexError:
                 print("Error in '{}'.".format(origTask))
                 print('Missing Argument.')
-                return [origTask, items]
+                return [None, origTask, items]
 
-        return [origTask, items]
+            #except ValueError:
+            #    return [None, origTask, items]
+
+        return [None, origTask, items]
+
+    
+
+
+    # At the end of While-block: decide if to do again
+    if items.get('WhileBlocks') != {}:
+        if task.startswith('end '):
+            endedBlock = task.split('end ')[1]
+            goto = items['WhileBlocks'].get(endedBlock)
+            # print(goto)
+
+            if goto != None and type(goto) == int:
+                goto = "###gotoline " + str(goto)
+                return [goto, origTask, items]
+            else:
+                return [None, origTask, items]
+
+
+    # while-blocks
+    if task.startswith('while'):
+        if tasknum != None:
+            safetyFeedback = WhileInterpreter.checkWhileBlock(task, tasknum, origTask, items)
+            return safetyFeedback
+        else:
+            print("Error in '{}'.".format(origTask))
+            print("Loop 'while' can only be used as main task..")
+            return [None, origTask, items]
+
 
 
 
@@ -133,13 +165,9 @@ def checkTask(task, origTask, items, code=None):
 
 
     # If it´s a variable thing
-    elif task.startswith('var'):
-        if items.get('Import_Variables') == True:
-            content = VariableInterpreter.checkVariable(task, origTask, items)[0]
-            return [content, origTask, items]
-        else:
-            print("Error in '{}'.".format(origTask))
-            print("Missing module 'Variables'.")
+    elif task.startswith('var '):
+        content = VariableInterpreter.checkVariable(task, origTask, items)[0]
+        return [content, origTask, items]
 
 
     # Set Indeces
@@ -167,37 +195,25 @@ def checkTask(task, origTask, items, code=None):
 
     # If it is a calculation
     elif task.startswith('calc'):
-        if items.get('Import_Calculations') == True:
-            # check if there is something to calculate
-            try:
-                task = task.split('calc ')[1]
-                result = CalculationInterpreter.calculate(task, origTask, items)[0]
-                return [result, origTask, items]
-            except IndexError:
-                return [None, origTask, items]
-        else:
-            print("Error in '{}'.".format(origTask))
-            print("Missing module 'Calculations'.")
+        # check if there is something to calculate
+        try:
+            task = task.split('calc ')[1]
+            result = CalculationInterpreter.calculate(task, origTask, items)[0]
+            return [result, origTask, items]
+        except IndexError:
+            return [None, origTask, items]
 
 
     # if-blocks
     elif task.startswith('if'):
-        if items.get('Import_If'):
-            safetyFeedback = IfInterpreter.checkIfBlock(task, origTask, items)
-            return safetyFeedback
-        else:
-            print("Error in '{}'.".format(origTask))
-            print("Missing module 'If'.")
+        safetyFeedback = IfInterpreter.checkIfBlock(task, origTask, items)
+        return safetyFeedback
 
 
     # If it´s a console task
     elif task.startswith('Console'):
-        if items.get('Import_Console') == True:
-            value = ConsoleInterpreter.checkConsole(task, origTask, items)[0]
-            return [value, origTask, items]
-        else:
-            print("Error in '{}'.".format(origTask))
-            print("Missing module 'Console'.")
+        value = ConsoleInterpreter.checkConsole(task, origTask, items)[0]
+        return [value, origTask, items]
 
 
     # time module

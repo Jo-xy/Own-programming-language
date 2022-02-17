@@ -1,3 +1,5 @@
+import MainInterpreter
+
 def calculate(task, origTask, items):
     ###########--Detection--#########
 
@@ -25,8 +27,8 @@ def calculate(task, origTask, items):
             opCounter += 1
         if i == ',':
             add = '.'
-        if add != ' ' and (add.isdigit() or add == '.' or add in operators):
-            splittableTask += add
+        # if add != ' ' and (add.isdigit() or add == '.' or add in operators):
+        splittableTask += add
 
     numbers = splittableTask.split('+')
 
@@ -37,10 +39,15 @@ def calculate(task, origTask, items):
     newNumbers = []
 
     for i in numbers:
-        if '.' in i:
-            add = float(i)
-        else:
-            add = int(i)
+        try:
+            if '.' in i:
+                add = float(i)
+            else:
+                add = int(i)
+
+        except ValueError:
+            # print(i)
+            add = MainInterpreter.checkTask(i, origTask, items)[0]
 
         newNumbers.append(add)
 

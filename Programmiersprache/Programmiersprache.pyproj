@@ -52,6 +52,7 @@
     <Compile Include="VariableInterpreter.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WhileInterpreter.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logo.png" />

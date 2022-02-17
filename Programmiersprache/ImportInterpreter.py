@@ -1,24 +1,7 @@
 def checkImport(task, origTask, items):
     toImport = task.split(' ')[1]
-    if toImport == 'NORMALS':
-        items['Import_Console'] = True
-        items['Import_Variables'] = True
-        items['Import_Calculations'] = True
-        items['Import_If'] = True
-
-    elif toImport == 'Console':
-        items['Import_Console'] = True
-
-    elif toImport == 'Variables':
-        items['Import_Variables'] = True
-
-    elif toImport == 'Calculations':
-        items['Import_Calculations'] = True
-
-    elif toImport == 'If':
-        items['Import_If'] = True
-
-    elif toImport == 'time':
+ 
+    if toImport == 'time':
         items['Import_time'] = True
 
     else:

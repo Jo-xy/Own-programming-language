@@ -17,3 +17,4 @@ Current list of all Errors
 - Not able to use indeces for this object.
 - Index out of range.
 - Element has no length.
+- Loop 'while' can only be used as main task.

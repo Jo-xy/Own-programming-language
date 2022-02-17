@@ -31,15 +31,29 @@ def checkExpression(boolExpression, origTask, items):
     if '==' in task:
         task = task.replace(' ', '')
         task = task.split('==')
-        compareMode = ['equals']
+        compareMode = ['equals', '==']
+    elif '!=' in task:
+        task = task.replace(' ', '')
+        task = task.split('!=')
+        compareMode = ['equals', '!=']
     elif '<' in task:
-        task = task.replace(' ', '')
-        task = task.split('<')
-        compareMode = ['num', '<']
+        if '<=' in task:
+            task = task.replace(' ', '')
+            task = task.split('<=')
+            compareMode = ['num', '<=']
+        else:
+            task = task.replace(' ', '')
+            task = task.split('<')
+            compareMode = ['num', '<']
     elif '>' in task:
-        task = task.replace(' ', '')
-        task = task.split('>')
-        compareMode = ['num', '>']
+        if '>=' in task:
+            task = task.replace(' ', '')
+            task = task.split('>')
+            compareMode = ['num', '>=']
+        else:
+            task = task.replace(' ', '')
+            task = task.split('>')
+            compareMode = ['num', '>']
     elif 'in' in task:
         task = task.replace(' ', '')
         task = task.split('in')
@@ -52,18 +66,31 @@ def checkExpression(boolExpression, origTask, items):
         task[0] = MainInterpreter.checkTask(task[0], origTask, items)[0]
         task[1] = MainInterpreter.checkTask(task[1], origTask, items)[0]
 
+        if task[0] == None or task[1] == None:
+            return [None, origTask, items]
+
         try:
             if compareMode[0] == 'equals':
-                if task[0] == task[1]:
-                    result = True
-                else:
-                    result = False
+                if compareMode[1] == '==':
+                    if task[0] == task[1]:
+                        result = True
+                    else:
+                        result = False
+                elif compareMode[1] == '!=':
+                    if task[0] != task[1]:
+                        result = True
+                    else:
+                        result = False
 
             elif compareMode[0] == 'num':
                 if compareMode[1] == '<':
                     result = (task[0] < task[1])
+                elif compareMode[1] == '<=':
+                    result = (task[0] <= task[1])
                 elif compareMode[1] == '>':
                     result = (task[0] > task[1])
+                elif compareMode[1] == '>=':
+                    result = (task[0] >= task[1])
 
             elif compareMode[0] == 'str':
                 if task[0] in task[1]:

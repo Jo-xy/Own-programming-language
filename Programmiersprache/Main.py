@@ -33,7 +33,7 @@
 
 7. Have a start GUI
     7.1. Have an Input-field, write code there and run it - Done on 01.01.2021 on ~20:00
-    7.2. Have a tick-box to import standard modules automatically
+    7.2. Have a tick-box to import standard modules automatically - use import NORMALS for the moment
     7.3. Load text from existing file
     7.4. Option of running the code multiple times
     7.5. Design the interface
@@ -82,7 +82,7 @@
     14.2. combine(elementList) - Done on 30.01.2022 on 17:45 (worked on it for around 15 minutes)
     14.3. toUpper() and toLower() - Done on 30.01.2022 on 19:00 (worked on it for ~20+ minutes)
     14.4. invertcase() changes uppercase to lowercase and the other way around + capitalize() all lowecase but the first uppercase - Done on 31.01.2022 on 11:30
-    14.5. isfirst() and islast() - Done on 31.01.2022 on 11:45
+    14.5. isFirst() and isLast() - Done on 31.01.2022 on 11:45
     14.6. remove(obj, ValueToRemove) - Done on 31.01.2022 on 12:55
     14.7. replace(obj, oldValue, newValue) - Done on 31.01.2022 on 13:00
 
@@ -93,14 +93,27 @@
     16.2. addIndex() and deleteIndex() and append() and extend() - Done on 31.01.2022 on 17:05
     16.3. searchValue(element, searchedValue) (maybe change functionname in future) - Done on 31.01.2022 on 17:15
 
-17. While-loops 
-    .IDEA() - Maybe do not loop through the original task, but first go through the tasks and add them each by each to the tasklist? - NO!! Will not work when user has to do an input!!
+17. Remove all 'NORMALS' and implement them always - probably done on 15.02.2022 on 18:15
 
-18. For-loops
+18. While-loops - Probably done on 16.02.2022 on 16:30
+    18.1. Idea - Done on 15.02.2022 on 15:45
+    18.2. Implement this idea
+        -> First 'while True' working on 15.02.2022  on 18:45 -- MANY BUGS ...Argh... -- fix tomorrow
+        18.2.1. Skip the code if statement is no longer true - Done on 16.02.2022 on 16:10
+        -> working so far
+    18.3. interprete variables with 'calc' to make dynamic loops - Done on 16.02.2022 on 16:20
+    18.4. do testing and bugfixing - Done on 16.02.2022 on 20:10
+    -> fixed bug for 'if' and 'while': read wrong codeBlock name - Done on 16.02.2022
+    -> fixed 'var variable' bug on 16.02.2022 on 17:30
+    -> delay-bug: have to proof it at the beginning or it will not skip the codeblock - Done on 16.02.2022 on 20:00
+    18.5. More options in BoolInterpreter - added != <= >= - Done on 16.02.2022 on 20:10
 
-19. Random module/functionalities
 
-20. Text encryption 
+19. For-loops
+
+20. Random module/functionalities
+
+21. Text encryption 
 
 
 
@@ -116,7 +129,8 @@ code = code.replace('\n', '')
 
 
 IfBlocks = []
-items = {'IfBlocks': IfBlocks}              # All variables, imports, in future objects, etc... # Also has CodeBlocks in it
+WhileBlocks = {}
+items = {'IfBlocks': IfBlocks, 'WhileBlocks': WhileBlocks}              # All variables, imports, in future objects, etc... # Also has CodeBlocks in it
 
 # remove last task-splitting-symbol to prevent 'Task not found' Error
 if code[-1] == ';':
@@ -124,10 +138,26 @@ if code[-1] == ';':
 # seperate tasks
 tasks = code.split(';')
 
+tasknum = 0
+while True:
+    task = tasks[tasknum]
 
-for task in tasks:
-    feedback = MainInterpreter.checkTask(task, task, items, code=code)
+    feedback = MainInterpreter.checkTask(task, task, items, tasks = tasks, code=code, tasknum=tasknum)
 
     # Remove this in Future!
     # Items is updated automatically, but is maybe still usefull (or actually used) as control-thing
     items = feedback[-1]
+
+    if type(feedback[-3]) == str:
+        if feedback[-3].startswith("###gotoline "):
+            newline = int(feedback[-3].split(' ')[1])
+            tasknum = newline
+
+        else:
+            tasknum += 1
+    else:
+        tasknum += 1
+
+
+    if (tasknum+1) > len(tasks):
+        break
